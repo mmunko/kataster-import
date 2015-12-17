@@ -72,10 +72,10 @@ BEGIN;
 		cas character varying(30),
 		zcs integer,
 		crc integer,
-		naz_suboru character varying(20) 
+		naz_suboru character varying(20)
 	);
 	COMMENT ON TABLE kn_cs IS 'Kataster: zoznam stavieb na cudzich pozemkoch';
-	
+
 	CREATE INDEX idx_kn_cs_parckey
 		ON kn_cs (parckey);
 
@@ -161,6 +161,8 @@ BEGIN;
 		pvz integer,
 		pep smallint,
 		ppl smallint,
+		slv character varying(30),
+		dst smallint,
 		crc integer,
 		naz_suboru character varying(20)
 	);
@@ -316,6 +318,7 @@ BEGIN;
 		pvz integer,
 		kpv smallint,
 		ico bigint,
+		pcz smallint,
 		sta integer,
 		rci bigint,
 		stb integer,
@@ -374,7 +377,7 @@ BEGIN;
 		naz_suboru character varying(20)
 	);
 	COMMENT ON TABLE kn_nj IS 'Kataster: drzitel, najomca a ina opr. osoba';
-	
+
 	CREATE INDEX idx_kn_nj_ku
 		ON kn_nj (ku);
 

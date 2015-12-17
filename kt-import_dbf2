@@ -48,13 +48,13 @@ numdata = {
 		'cs': ['ics', 'clv', 'cel', 'cpa', 'pec', 'mss', 'vym', 'ums', 'drs', 'pvz', 'kpv', 'don', 'cen', 'oce', 'zcs', 'crc'],
 		'ep': ['cpa', 'cpu', 'vym', 'kvv', 'drp', 'don', 'pkk', 'mss', 'pec', 'cel', 'clv', 'kpv', 'ump', 'pvz', 'miv', 'clm',
 				'drv', 'ndp', 'prp', 'spn', 'mlm', 'cen', 'oce', 'pcp', 'crc'],
-		'lv': ['clv', 'psv', 'rzs', 'kpv', 'rzp', 'pvz', 'pep', 'ppl', 'crc'],
+		'lv': ['clv', 'psv', 'rzs', 'kpv', 'rzp', 'pvz', 'pep', 'ppl', 'crc','dst'],
 		'pa': ['cpa', 'vym', 'kvv', 'drp', 'don', 'pkk', 'mss', 'pec', 'cel', 'clv', 'kpv', 'ump', 'pvz', 'miv', 'clm', 'drv',
 				'prp', 'spn', 'ndp', 'dn1', 'dn2', 'dn3', 'dn4', 'dn5', 'dn6', 'dn7', 'dn8', 'mlm', 'cen', 'oce', 'crc'],
 		'pk': ['ump', 'cpk', 'cpu', 'crc'],
 		'pv': ['idc', 'clv', 'pcs', 'idt', 'idn', 'cde', 'drf', 'pvz', 'kpv', 'crc'],
 		'uz': ['cel', 'sip', 'sek', 'pks', 'pvz', 'rzp', 'kpv', 'ppe', 'ico', 'crc'],
-		'vl': ['clv', 'pcs', 'cit', 'men', 'pvz', 'kpv', 'ico', 'sta', 'rci', 'stb', 'tvl', 'tuc', 'dru', 'tid', 'crc'],
+		'vl': ['clv', 'pcs', 'cit', 'men', 'pvz', 'kpv', 'ico', 'sta', 'rci', 'stb', 'tvl', 'tuc', 'dru', 'tid', 'crc','pcz'],
 		'nj': ['cel', 'ico', 'pvz', 'sek', 'sip', 'tid', 'crc']
 }
 nullchar = re.compile('\00') # invalid null character (can be also replace by sed $ sed -i 's/\x0//g')
