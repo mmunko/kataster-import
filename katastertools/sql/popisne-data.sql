@@ -386,7 +386,49 @@ BEGIN;
 
 	CREATE INDEX idx_kn_nj_ico
 		ON kn_nj (ico);
+
+	-- kn_codes
+	CREATE TABLE kn_codes (
+		nam varchar(10),
+		cod smallint,
+		val varchar(500)
+	);
+	COMMENT ON TABLE kn_codes IS 'Kataster: ciselnik kodov';
+
+	ALTER TABLE kn_codes ADD PRIMARY KEY (nam,cod);
+
+	-- reg_kr
+	CREATE TABLE reg_kr (
+		ckr integer PRIMARY KEY,
+		nkr varchar(200)
+	);
+	COMMENT ON TABLE reg_kr IS 'Kataster: Register krajov';
+
+	CREATE INDEX idx_reg_kr_ckr
+		ON reg_kr(ckr);
+
+  -- reg_ku
+	CREATE TABLE reg_ku (
+		cku integer PRIMARY KEY,
+		nku varchar(200),
+		cob integer
+	);
+	COMMENT ON TABLE reg_ku IS 'Kataster: Register katastralnych uzemi';
+
+  -- reg_ob
+	CREATE TABLE reg_ob (
+		cob integer PRIMARY KEY,
+		nob varchar(200),
+		cok integer
+	);
+	COMMENT ON TABLE reg_ob IS 'Kataster: Register obci';
+
+  -- reg_ok
+	CREATE TABLE reg_ok (
+		cok integer PRIMARY KEY,
+		nok varchar(200),
+		ckr integer
+	);
+	COMMENT ON TABLE reg_ok IS 'Kataster: Register okresov';
 END;
-
-
 -- vim: set ts=2 sts=2 sw=2 noet:

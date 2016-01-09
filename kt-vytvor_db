@@ -15,6 +15,11 @@ from katastertools import VgiShp
 sql_subory = [
 	'popisne-data.sql',
 	'graficke-data.sql',
+	'tables/kn_codes.sql',
+	'tables/reg_kr.sql',
+	'tables/reg_ok.sql',
+	'tables/reg_ob.sql',
+	'tables/reg_ku.sql'
 ]
 
 # vytvorenie schem
