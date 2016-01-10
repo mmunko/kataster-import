@@ -48,10 +48,10 @@ if [[ -d fpu && "$(ls -A fpu)" ]]; then
 	echo "* Konverzia FPU do SQL ..."
 	for file in $(find "$ROOT_DIR/fpu" -iname "*.FPU"); do
 		fpuc=$(sed 's/\.FPU$/\.fpuc/I' <<< $file)
-	
+
 		echo "* Cistenie FPU ($file) ..."
 		kt-vycisti_fuvi $file IBM852 > $fpuc || (echo "I: Opakujem cistenie s kodovanim 'CP1250'"; kt-vycisti_fuvi $file CP1250 > $fpuc)
-	
+
 		echo "* Konverzia FPU do SQL ($file) ..."
 		kt-import_fuvi $fpuc > $ROOT_DIR/sql_p/$(basename $file).sql
 	done;
@@ -97,6 +97,9 @@ find vgi -iname "UO*.vgi" -exec kt-vgi2shp -f shp -o shp "{}" \; &> log/vgi-uo-s
 echo "* Konverzia UO do DGN (vsetky najdene vrstvy)..."
 find vgi -iname "UO*.vgi" -exec kt-vgi2shp -f dgn -o dgn "{}" \; &> log/vgi-uo-dgn.log
 
+
+#odstanenie nadbytocneho COMMIT z vygenerovanych sql suborov (Zabrani PostgreSQL WARNING : No running transaction)
+find sql_g -iname "*.sql" -exec kt-remove_trailing_sqlcommit "{}" \;
 
 echo "* Spajanie SQL suborov grafickych dat ..."
 find $ROOT_DIR/sql_g -type f -iname *.sql -exec cat "{}" >> sql/graficke_udaje.sql \;

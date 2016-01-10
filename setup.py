@@ -59,7 +59,8 @@ setup(
 		'kt-import_fuvi',
 		'kt-vycisti_fuvi',
 		'kt-vytvor_db',
-		'kt-sql'],
+		'kt-sql',
+		'kt-remove_trailing_sqlcommit'],
 
 	classifiers=classifiers
 )
