@@ -45,8 +45,8 @@ setup(
 		"The Geodesy, Cartography and Cadastre Authority of Slovak republic."
 		"There is no reason to use it for other purposes.",
 
-	author='Peter Hyben, Ivan Mincik, Marcel Dancak',
-	author_email='peter.hyben@hugis.eu, ivan.mincik@gmail.com, dancakm@gmail.com',
+	author='Peter Hyben, Ivan Mincik, Marcel Dancak, Milan Munko',
+	author_email='peter.hyben@hugis.eu, ivan.mincik@gmail.com, dancakm@gmail.com, milan.munko@gmail.com',
 
 	license='GNU GPL-2',
 	url='https://github.com/imincik/kataster-import',
