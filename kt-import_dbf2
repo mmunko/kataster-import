@@ -66,7 +66,7 @@ print "-- I: CAS: %s, VYTVORIL: %s, VERZIA: %s" % (cas, os.environ['USER'], verz
 
 print 'SET client_encoding TO UTF8;'
 print 'BEGIN;'
-
+print("COPY kn_%s (ku, %s) FROM STDIN WITH NULL AS 'None';" % (typ_dbf, ', '.join(zoznam_stlpcov)))
 for rec in dbfile:
 	#if not rec.has_been_deleted:
 	if not dbf.is_deleted(rec):
@@ -81,20 +81,26 @@ for rec in dbfile:
 			if stlpec in numdata[typ_dbf]:
 				hodnota = nonechar.sub('0', hodnota)
 
-			hodnoty += "$$" + hodnota + "$$, "
+			if len(hodnota.splitlines()) != 1:
+				lines = hodnota.splitlines()
+				hodnota = ""
+				for line in lines:
+					hodnota += line + "\\r"
 
-		print ('INSERT INTO kn_%s (ku, %s) VALUES (%s, %s);' % (typ_dbf, ', '.join(zoznam_stlpcov), ku, nullchar.sub('', hodnoty.strip(', '))))
+			hodnoty += hodnota + "\t"
 
+		print ('%s\t%s' % (ku, nullchar.sub('', hodnoty[:-1])))
 
 # vytvorenie jedinecneho identifikatora parcely - parckey
+print '\\.'
+print 'END;'
+
 if typ_dbf in ('cs', 'pa'):
 	print "UPDATE kn_%s SET parckey = (ku::text || '00' || to_char(cpa, 'FM000000000')) WHERE ku = '%s';" % (typ_dbf, ku)
 
 if typ_dbf == 'ep':
 	print "UPDATE kn_%s SET parckey = (ku::text || to_char(cpu, 'FM00') || to_char(cpa, 'FM000000000')) WHERE ku = '%s';" % (typ_dbf, ku)
 
-
-print 'END;'
 
 
 # vim: set ts=4 sts=4 sw=4 noet:
