@@ -60,7 +60,8 @@ setup(
 		'kt-vycisti_fuvi',
 		'kt-vytvor_db',
 		'kt-sql',
-		'kt-remove_trailing_sqlcommit'],
+		'kt-remove_trailing_sqlcommit',
+		'kt-kn_unzipper'],
 
 	classifiers=classifiers
 )
