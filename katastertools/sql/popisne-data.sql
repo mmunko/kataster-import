@@ -391,7 +391,7 @@ BEGIN;
 	CREATE TABLE kn_codes (
 		nam varchar(10),
 		cod smallint,
-		val varchar(500)
+		val varchar
 	);
 	COMMENT ON TABLE kn_codes IS 'Kataster: ciselnik kodov';
 

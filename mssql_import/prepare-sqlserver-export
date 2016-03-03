@@ -1,9 +1,11 @@
 #!/bin/bash
 read table_name <<< $(psql -U $3 -d kataster -h $1 -p $2 -c $'SELECT f_table_name FROM public.geometry_columns where f_table_schema = \'kataster\';')
 tables=($table_name);
+echo "PROCESSING TABLES: "
 ntables=$[${#tables[@]}-4];
 for table in ${tables[@]:2:$ntables};
 do
+  echo $table
   psql -U $3 -d kataster -h $1 -p $2 -c 'ALTER TABLE '$table' ADD COLUMN geom_txt text;'
 	psql -U $3 -d kataster -h $1 -p $2 -c 'UPDATE '$table' SET geom_txt = st_astext(geom);'
 	psql -U $3 -d kataster -h $1 -p $2 -c 'ALTER TABLE '$table' DROP COLUMN geom;'

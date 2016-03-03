@@ -1,3 +1,4 @@
+BEGIN;
 COPY kn_codes (nam, cod, val) FROM stdin;
 CDE	1	Ťarcha
 CDE	2	Iný údaj
@@ -151,3 +152,4 @@ TVL	6	Poručiteľ, po ktorom sa prihlásil domnelý dedič alebo dedičia (dedi�
 TVL	7	Poručiteľ, ktorého dedič nie je známy
 TVL	8	Právnická osoba, ktorá zanikla a jej právny nástupca nie je známy
 \.
+END;

@@ -33,7 +33,6 @@ except:
 	print __doc__
 	sys.exit(2)
 
-
 # Nacitanie DBF suboru
 dbfile = dbf.Table(dbf_subor_full_path)
 dbfile.open()
