@@ -1,6 +1,0 @@
-#!/bin/bash
-# Odstrani nadbytocny COMMIT; z sql suborov grafickych informacii Katastra
-# cim zabrani vypisovaniu WARNING hlasok a sprehladni citanie output
-
-head -n -1 $1 > tmp.sql;
-mv tmp.sql $1;
