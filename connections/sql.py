@@ -1,11 +1,11 @@
 class MSSQL:
-    #
-    # Trieda zdruzujuca sql pre MS SQL Server
-    #
+    """
+    Trieda zdruzujuca sql pre MS SQL Server
+    """
     def create_tables(schema):
-        #
-        # Metoda ktora vytvori strukturu databazy
-        #
+        """
+        Metoda ktora vytvori strukturu databazy
+        """
         return """
         -- Vytvori priestorove tabulky
         -- ===================================
@@ -377,9 +377,9 @@ class MSSQL:
         """.format(schema)
 
     def drop_tables(schema):
-        #
-        # Metoda ktora vycisti vsetky objekty v danej scheme
-        #
+        """
+        Metoda ktora vycisti vsetky objekty v danej scheme
+        """
         return """
             drop table {0}.kn_nj;
             drop table {0}.kn_vl;
