@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Hlavny python skript ktory riadi cely import informacii katastra nehnutelnosti do cielovej databazy.
+
+Pouzitie:
+"""
+
+from connections.databases import DatabaseConnector
+
+# Inicializacia Databazy:
+# db = DatabaseConnector('sql',server='10.0.2.8',db='KatasterTest',user='KnImporter',pwd='knimport',schema='dbo')
+# db.initialize(clean=True)
+# db.clean()
