@@ -1,4 +1,5 @@
 -- Vytvorenie tabuliek pre popisne data Katastra
+SET search_path TO kataster,public;
 BEGIN;
 	-- kn_bp
 	CREATE TABLE kn_bp (

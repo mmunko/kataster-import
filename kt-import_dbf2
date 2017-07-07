@@ -75,6 +75,9 @@ for rec in dbfile:
 				hodnota = rec[stlpec].encode('UTF-8').strip()
 			except:
 				hodnota = str(rec[stlpec]).strip()
+			
+			if "\t" in hodnota:
+				hodnota = hodnota.replace('\t',' ')
 
 			# odstranenie retazca 'None' v ciselnych stlpcoch
 			if stlpec in numdata[typ_dbf]:
@@ -95,10 +98,10 @@ print '\\.'
 print 'END;'
 
 if typ_dbf in ('cs', 'pa'):
-	print "UPDATE kn_%s SET parckey = (ku::text || '00' || to_char(cpa, 'FM000000000')) WHERE ku = '%s';" % (typ_dbf, ku)
+	print "UPDATE kn_%s SET parckey = ('C' || ku::text || '00' || to_char(cpa, 'FM000000000')) WHERE ku = '%s';" % (typ_dbf, ku)
 
 if typ_dbf == 'ep':
-	print "UPDATE kn_%s SET parckey = (ku::text || to_char(cpu, 'FM00') || to_char(cpa, 'FM000000000')) WHERE ku = '%s';" % (typ_dbf, ku)
+	print "UPDATE kn_%s SET parckey = ('E' || ku::text || to_char(cpu, 'FM00') || to_char(cpa, 'FM000000000')) WHERE ku = '%s';" % (typ_dbf, ku)
 
 
 

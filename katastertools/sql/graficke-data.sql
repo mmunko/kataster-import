@@ -1,4 +1,5 @@
 -- Vytvorenie tabuliek pre graficke data Katastra
+SET search_path TO kataster,public;
 BEGIN;
 	-- kn_kladpar
 	CREATE TABLE kn_kladpar (

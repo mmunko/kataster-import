@@ -235,14 +235,14 @@ class Plosny_objekt(Objekt):
 
 class Parcela(Plosny_objekt):
 	polia = Plosny_objekt.polia + (
-		{'nazov': 'parckey', 'typ': 'OFTString', 'sirka': 17},
+		{'nazov': 'parckey', 'typ': 'OFTString', 'sirka': 18},
 		{'nazov': 'parcela', 'typ': 'OFTString', 'sirka': 40},
 		{'nazov': 'kmen', 'typ': 'OFTInteger'},
 		{'nazov': 'podlomenie', 'typ': 'OFTInteger'},
 		{'nazov': 't', 'typ': 'OFTString', 'sirka': 254},
 	)
 
-	def spracuj_cislo_parcely(self, hodnota):
+	def spracuj_cislo_parcely(self, hodnota, register):
 		# uprava specialneho pripadu cisla parcely bez desatinnej casti
 		if '.' not in hodnota:
 			hodnota = hodnota + '.0'
@@ -259,7 +259,7 @@ class Parcela(Plosny_objekt):
 		lomeny_tvar = "%s/%d" % (kmen, podlomenie) if podlomenie > 0 else "%s" % kmen
 		if cpu:
 			lomeny_tvar = "%s-%s" % (cpu, lomeny_tvar)
-		parckey = '%06d%02d%05d%03d0' % (int(self.atributy_suboru['KU']), cpu, kmen, podlomenie)
+		parckey = '%s%06d%02d%05d%03d0' % (register,int(self.atributy_suboru['KU']), cpu, kmen, podlomenie)
 		return {
 			'kmen': kmen,
 			'podlomenie': podlomenie,
@@ -302,7 +302,7 @@ class KLADPAR(Parcela):
 
 		logging.debug("  Konvertujem PARCIS: %s", self.atributy_objektu.get('PARCIS'))
 		try:
-			atributy.update(self.spracuj_cislo_parcely(self.atributy_objektu['PARCIS']))
+			atributy.update(self.spracuj_cislo_parcely(self.atributy_objektu['PARCIS'],'C'))
 		except:
 			logging.error("Zly PARCIS %s v objekte %s", self.atributy_objektu.get('PARCIS'), self.atributy_objektu['ID'])
 
@@ -317,7 +317,7 @@ class UOV(Parcela):
 
 		logging.debug("  Konvertujem UO: %s", self.atributy_objektu.get('UO'))
 		try:
-			atributy.update(self.spracuj_cislo_parcely(self.atributy_objektu['UO']))
+			atributy.update(self.spracuj_cislo_parcely(self.atributy_objektu['UO'],'E'))
 		except:
 			logging.error("Zly UO %s v objekte %s", self.atributy_objektu.get('UO'), self.atributy_objektu['ID'])
 
